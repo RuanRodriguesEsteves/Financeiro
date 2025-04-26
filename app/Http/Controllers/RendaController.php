@@ -81,7 +81,7 @@ class RendaController extends Controller {
             $alterado = true;
         }
 
-        if($request->valor !== $renda->valor){
+        if((double) $request->valor !== (double) $renda->valor){
             $renda->valor = $request->valor;
             $renda->save();
             $alterado = true;

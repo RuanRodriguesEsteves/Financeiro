@@ -49,7 +49,7 @@
         <form action="{{route('renda.index')}}" method="GET" class="row g-2 align-items-end mb-3">
             @csrf
             <div class="col-md-1">
-                <input placeholder="ID" type="text" class="form-control" id="id" name="id">
+                <input placeholder="ID" type="number" class="form-control" id="id" name="id">
             </div>
             <div class="col-md-3">
                 <input placeholder="Descrição" type="text" class="form-control" id="descricao" name="descricao">
