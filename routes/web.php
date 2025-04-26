@@ -66,6 +66,7 @@ Route::prefix('mensalidadecartao')->name('mensalidadecartao.')->group(function()
 Route::prefix('despesa')->name('despesa.')->group(function(){
     Route::get('/', [DespesaController::class, 'iniciar'])->name('index');
     Route::post('/', [DespesaController::class, 'salvar'])->name('salvar');
+    Route::put('/{id}', [DespesaController::class, 'atualizar'])->name('atualizar');
 });
 
 Route::prefix('renda')->name('renda.')->group(function(){
