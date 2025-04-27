@@ -7,8 +7,7 @@ use App\Models\TipoDespesa;
 
 class TipoDespesaController extends Controller {
 
-    public function iniciar(SalvarTipoDespesaRequest $request = null)
-    {
+    public function iniciar(SalvarTipoDespesaRequest $request = null) {
         $request = $request ?: SalvarTipoDespesaRequest::capture();
 
         $id = $request->input('id', null);
@@ -28,7 +27,7 @@ class TipoDespesaController extends Controller {
         }
 
         if($descricao != null) {
-            $query = $query->where('descricao', $descricao);
+            
         }
 
         $tipoDespesas = $query->get();
@@ -66,7 +65,6 @@ class TipoDespesaController extends Controller {
            return redirect()->route('tipodespesa.index')->with('error', 'Nada para ser alterado');
         }
     }
-
 }
 
 ?>

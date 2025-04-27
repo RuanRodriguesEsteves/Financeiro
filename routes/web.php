@@ -51,6 +51,7 @@ Route::prefix('tipodespesa')->name('tipodespesa.')->group(function () {
 Route::prefix('banco')->name('banco.')->group(function () {
     Route::get('/', [BancoController::class, 'iniciar'])->name('index');
     Route::post('/', [BancoController::class, 'salvar'])->name('salvar');
+    Route::put('/{id}', [BancoController::class, 'atualizar'])->name('atualizar');
 });
 
 Route::prefix('cartao')->name('cartao.')->group(function() {
