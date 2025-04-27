@@ -139,11 +139,12 @@
                 </td>
                 <td>
                     <select name="id_mensalidadecartao" id="id_mensalidadecartao" class="form-select" form="{{ $formId }}">
-                        <option value="{{ $despesa->id_mensalidadecartao }}">{{ optional($despesa->mensalidadeCartao)->descricao }}</option>
+                        <option value="">Sem Mensalidade</option>
                         @foreach($mensalidadeCartoes as $mensalidadeCartao)
-                            @if($mensalidadeCartao->id != $despesa->id_mensalidadecartao)
-                                <option value="{{ $mensalidadeCartao->id }}">{{ ($mensalidadeCartao->descricao) }}</option>
-                            @endif
+                            <option value="{{ $mensalidadeCartao->id }}" 
+                                @if($mensalidadeCartao->id == $despesa->id_mensalidadecartao) selected @endif>
+                                {{ $mensalidadeCartao->descricao }}
+                            </option>
                         @endforeach
                     </select>
                 </td>

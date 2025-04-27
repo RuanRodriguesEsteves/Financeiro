@@ -84,8 +84,6 @@ class DespesaController extends Controller {
         $despesa = Despesa::findOrFail($id);
         $alterado = false;
 
-        return 'Chegou em Atualizar';
-
         if($request->descricao !== $despesa->descricao){
             $despesa->descricao = $request->descricao;
             $despesa->save();
@@ -106,10 +104,9 @@ class DespesaController extends Controller {
         }
 
         if((int) $request->id_mensalidadecartao !== (int) $despesa->id_mensalidadecartao){
-            if($request->id_mensalidadecartao === 'null') {
+            if($request->id_mensalidadecartao == '') {
                 $despesa->id_mensalidadecartao = null;
                 $despesa->save();
-                return 'Alterado com sucesso';
             }else{
                 $despesa->id_mensalidadecartao = $request->id_mensalidadecartao;
                 $despesa->save();
