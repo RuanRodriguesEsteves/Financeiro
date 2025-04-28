@@ -5,7 +5,7 @@
 <h1>Cartão</h1>
 
 <div class="card mb-4">
-    <div class="card-header">
+    <div class="card-header bg-dark text-white">
         Cadastrar Cartão
     </div>
     <div class="card-body">
@@ -32,7 +32,7 @@
 </div>
 
 <div class="card mb-4">
-    <div class="card-header">
+    <div class="card-header bg-dark text-white">
         Consultar Cartão
     </div>
     <div class="card-body">

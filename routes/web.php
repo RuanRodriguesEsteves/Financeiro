@@ -8,6 +8,7 @@ use App\Http\Controllers\CartaoController;
 use App\Http\Controllers\DespesaController;
 use App\Http\Controllers\MensalidadeCartaoController;
 use App\Http\Controllers\RendaController;
+use App\Models\MensalidadeCartao;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,6 +64,7 @@ Route::prefix('cartao')->name('cartao.')->group(function() {
 Route::prefix('mensalidadecartao')->name('mensalidadecartao.')->group(function() {
     Route::get('/', [MensalidadeCartaoController::class, 'iniciar'])->name('index');
     Route::post('/', [MensalidadeCartaoController::class, 'salvar'])->name('salvar');
+    Route::put('/{id}', [MensalidadeCartaoController::class, 'atualizar'])->name('atualizar');
 });
 
 Route::prefix('despesa')->name('despesa.')->group(function(){

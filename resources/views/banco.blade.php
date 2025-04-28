@@ -4,7 +4,7 @@
 <h1>Banco</h1>
 
 <div class="card mb-4">
-    <div class="card-header">
+    <div class="card-header bg-dark text-white">
         Cadastro de Banco
     </div>
     <div class="card-body">
@@ -22,7 +22,7 @@
 </div>
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header bg-dark text-white">
         Consultar Banco
     </div>
     <div class="card-body">
