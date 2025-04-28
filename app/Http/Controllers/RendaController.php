@@ -21,7 +21,7 @@ class RendaController extends Controller {
         if ($ativo === 'false') {
             $query = Renda::where('ativo', false)->orderBy('id');
         } else if ($ativo === 'todos') {
-            $query = Renda::query()->orderBy('id');
+            $query = Renda::orderBy('id');
         } else {
             $query = Renda::where('ativo', true)->orderBy('id');
         }

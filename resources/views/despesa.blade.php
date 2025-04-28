@@ -129,7 +129,7 @@
                         <option value="{{ $despesa->id_tipodespesa }}">{{ $despesa->tipoDespesa->descricao }}</option>
                         @foreach ($tipoDespesas as $tipoDespesa)
                             @if ($tipoDespesa->id != $despesa->id_tipodespesa)
-                                <option value="{{ $despesa->id_tipodespesa }}">{{ $tipoDespesa->descricao }}</option>
+                                <option value="{{ $tipoDespesa->id }}">{{ $tipoDespesa->descricao }}</option>
                             @endif
                         @endforeach
                     </select>

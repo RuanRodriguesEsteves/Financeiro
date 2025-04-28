@@ -14,9 +14,7 @@ class BancoController extends Controller {
         $id = $request->input('id', null);
         $descricao = $request->input('descricao', null);
         $ativo = $request->input('ativo', null);
-
-        //return 'ID: ' . $id . '<br>Descrição: ' . $descricao . '<br>Ativo: ' . $ativo;
-
+        
         if($ativo === 'false') {
             $query = Banco::where('ativo', false)->orderBy('id');
         }else if($ativo === 'todos') {
