@@ -21,17 +21,8 @@ new Chart(mesAtual, {
                 ],
                 borderWidth: 1
             }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
         }
 });
-
-
 
 const proximoMes = document.getElementById('proximoMes');
 
@@ -48,12 +39,5 @@ new Chart(proximoMes, {
                 ],
                 borderWidth: 1
             }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
         }
 });

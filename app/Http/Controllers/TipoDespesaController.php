@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SalvarTipoDespesaRequest;
+use App\Http\Requests\TipoDespesaRequest;
 use App\Models\TipoDespesa;
 
 class TipoDespesaController extends Controller {
 
-    public function iniciar(SalvarTipoDespesaRequest $request = null) {
-        $request = $request ?: SalvarTipoDespesaRequest::capture();
+    public function iniciar(TipoDespesaRequest $request = null) {
+        $request = $request ?: TipoDespesaRequest::capture();
 
         $id = $request->input('id', null);
         $descricao = $request->input('descricao', null);
@@ -36,14 +36,15 @@ class TipoDespesaController extends Controller {
         ]);
     }
 
-    public function salvar(SalvarTipoDespesaRequest $request) {
+    public function salvar(TipoDespesaRequest $request) {
         $tipoDespesa = TipoDespesa::create([
             'descricao' => $request->input('descricao')
         ]);
-        return redirect('tipodespesa');
+        
+        return redirect()->route('tipodespesa.index')->with('successoSalvar', 'Renda salva com sucesso!');
     }
 
-    public function atualizar(SalvarTipoDespesaRequest $request, $id) {
+    public function atualizar(TipoDespesaRequest $request, $id) {
         $tipoDespesa = TipoDespesa::findOrFail($id);
         $alterado = false;
 

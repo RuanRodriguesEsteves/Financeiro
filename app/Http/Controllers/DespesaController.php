@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SalvarDespesaRequest;
+use App\Http\Requests\DespesaRequest;
 use App\Models\Despesa;
 use App\Models\MensalidadeCartao;
 use App\Models\TipoDespesa;
 
 class DespesaController extends Controller {
 
-    public function iniciar(SalvarDespesaRequest $request = null) {
-        $request = $request ?: SalvarDespesaRequest::capture();
+    public function iniciar(DespesaRequest $request = null) {
+        $request = $request ?: DespesaRequest::capture();
 
         $id = $request->input('id', null);
         $descricao = $request->input('descricao', null);
@@ -68,7 +68,7 @@ class DespesaController extends Controller {
         ]);
     }
 
-    public function salvar(SalvarDespesaRequest $request) {
+    public function salvar(DespesaRequest $request) {
         $despesa = Despesa::create([
             'descricao' => $request->input('descricao'),
             'id_tipodespesa' => $request->input('id_tipodespesa'),
@@ -77,10 +77,10 @@ class DespesaController extends Controller {
             'id_mensalidadecartao' => $request->input('id_mensalidadecartao')
         ]);
 
-        return $this->iniciar();
+        return redirect()->route('despesa.index')->with('successoSalvar', 'Renda salva com sucesso!');
     }
 
-    public function atualizar(SalvarDespesaRequest $request, $id) {
+    public function atualizar(DespesaRequest $request, $id) {
         $despesa = Despesa::findOrFail($id);
         $alterado = false;
 

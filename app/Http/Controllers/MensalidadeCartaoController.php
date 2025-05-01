@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SalvarMensalidadeCartaoRequest;
+use App\Http\Requests\MensalidadeCartaoRequest;
 use App\Models\Cartao;
 use App\Models\MensalidadeCartao;
 
 class MensalidadeCartaoController extends Controller {
 
-    public function iniciar(SalvarMensalidadeCartaoRequest $request = null) {
-        $request = $request ?: SalvarMensalidadeCartaoRequest::capture();
+    public function iniciar(MensalidadeCartaoRequest $request = null) {
+        $request = $request ?: MensalidadeCartaoRequest::capture();
 
         $id = $request->input('id', null);
         $descricao = $request->input('descricao', null);
@@ -65,7 +65,7 @@ class MensalidadeCartaoController extends Controller {
         ]);
     }
 
-    public function salvar(SalvarMensalidadeCartaoRequest $request) {
+    public function salvar(MensalidadeCartaoRequest $request) {
 
         $mensalidadeCartoes = MensalidadeCartao::create([
             'descricao' => $request->input('descricao'),
@@ -76,11 +76,10 @@ class MensalidadeCartaoController extends Controller {
             'id_cartao' => $request->input('id_cartao')
         ]);
 
-        return redirect('/');
-
+        return redirect()->route('mensalidadecartao.index')->with('successoSalvar', 'Renda salva com sucesso!');
     }
 
-    public function atualizar(SalvarMensalidadeCartaoRequest $request, $id) {
+    public function atualizar(MensalidadeCartaoRequest $request, $id) {
         $mensalidadeCartoes = MensalidadeCartao::findOrFail($id);
         $alterado = false;
 

@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SalvarTipoRendaRequest;
+use App\Http\Requests\TipoRendaRequest;
 use App\Models\TipoRenda;
 
 class TipoRendaController extends Controller {
 
-    public function iniciar(SalvarTipoRendaRequest $request = null)
-    {
-        $request = $request ?: SalvarTipoRendaRequest::capture();
+    public function iniciar(TipoRendaRequest $request = null){
+        $request = $request ?: TipoRendaRequest::capture();
 
         $id = $request->input('id', null);
         $descricao = $request->input('descricao', null);
@@ -37,14 +36,15 @@ class TipoRendaController extends Controller {
         ]);
     }
 
-    public function salvar(SalvarTipoRendaRequest $request) {
+    public function salvar(TipoRendaRequest $request) {
         TipoRenda::create([
             'descricao' => $request->input('descricao')
         ]);
-        return redirect('/tiporenda');
+        
+        return redirect()->route('tiporenda.index')->with('successoSalvar', 'Renda salva com sucesso!');
     }
 
-    public function atualizar(SalvarTipoRendaRequest $request, $id) {
+    public function atualizar(TipoRendaRequest $request, $id) {
         $tiporenda = TipoRenda::findOrFail($id);
         $alterado = false;
 

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SalvarTipoRendaRequest extends FormRequest
+class BancoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

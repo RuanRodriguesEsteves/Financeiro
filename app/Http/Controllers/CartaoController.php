@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SalvarCartaoRequest;
+use App\Http\Requests\CartaoRequest;
 use App\Models\Banco;
 use App\Models\Cartao;
 
 class CartaoController extends Controller {
 
-    public function iniciar(SalvarCartaoRequest $request = null) {
-        $request = $request ?: SalvarCartaoRequest::capture();
+    public function iniciar(CartaoRequest $request = null) {
+        $request = $request ?: CartaoRequest::capture();
 
         $id = $request->input('id', null);
         $descricao = $request->input('descricao', null);
@@ -44,16 +44,16 @@ class CartaoController extends Controller {
         ]);
     }
 
-    public function salvar(SalvarCartaoRequest $request) {
+    public function salvar(CartaoRequest $request) {
         $cartao = Cartao::create([
             'descricao' => $request->input('descricao'),
             'id_banco' => $request->input('id_banco')
         ]);
 
-        return $this->iniciar();
+        return redirect()->route('cartao.index')->with('successoSalvar', 'Renda salva com sucesso!');
     }
 
-    public function atualizar(SalvarCartaoRequest $request, $id) {
+    public function atualizar(CartaoRequest $request, $id) {
         $cartao = Cartao::findOrFail($id);
         $alterado = false;
 

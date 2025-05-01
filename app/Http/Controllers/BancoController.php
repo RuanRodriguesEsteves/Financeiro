@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SalvarBancoRequest;
+use App\Http\Requests\BancoRequest;
 use App\Models\Banco;
 
 class BancoController extends Controller {
 
-    public function iniciar(SalvarBancoRequest $request = null) {
+    public function iniciar(BancoRequest $request = null) {
 
-        $request = $request ?: SalvarBancoRequest::capture();
+        $request = $request ?: BancoRequest::capture();
 
         $id = $request->input('id', null);
         $descricao = $request->input('descricao', null);
@@ -37,14 +37,15 @@ class BancoController extends Controller {
         ]);
     }
 
-    public function salvar(SalvarBancoRequest $request) {
+    public function salvar(BancoRequest $request) {
         $banco = Banco::create([
             'descricao' => $request->input('descricao')
         ]);
-        return $this->iniciar();
+        
+        return redirect()->route('banco.index')->with('successoSalvar', 'Renda salva com sucesso!');
     }
 
-    public function atualizar(SalvarBancoRequest $request, $id) {
+    public function atualizar(BancoRequest $request, $id) {
         $banco = Banco::findOrFail($id);
         $alterado = false;
 

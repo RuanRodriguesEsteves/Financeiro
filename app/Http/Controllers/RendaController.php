@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SalvarRendaRequest;
+use App\Http\Requests\RendaRequest;
 use App\Models\Renda;
 use App\Models\TipoRenda;
 
 class RendaController extends Controller {
 
-    public function iniciar(SalvarRendaRequest $request = null) {
-        $request = $request ?: SalvarRendaRequest::capture();
+    public function iniciar(RendaRequest $request = null) {
+        $request = $request ?: RendaRequest::capture();
 
         $id = $request->input('id', null);
         $descricao = $request->input('descricao', null);
@@ -54,7 +54,7 @@ class RendaController extends Controller {
         ]);
     }
 
-    public function salvar(SalvarRendaRequest $request) {
+    public function salvar(RendaRequest $request) {
         $renda = Renda::create([
                 'id_tiporenda' => $request->input('id_tiporenda'),
                 'valor' => $request->input('valor'),
@@ -62,10 +62,10 @@ class RendaController extends Controller {
                 'descricao' => $request->input('descricao'),
         ]);
 
-        return $this->iniciar();
+        return redirect()->route('renda.index')->with('successoSalvar', 'Renda salva com sucesso!');
     }
 
-    public function atualizar(SalvarRendaRequest $request, $id){
+    public function atualizar(RendaRequest $request, $id){
         $renda = Renda::findOrFail($id);
         $alterado = false;
 

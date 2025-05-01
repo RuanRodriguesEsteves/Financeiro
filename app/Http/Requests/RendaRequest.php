@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SalvarBancoRequest extends FormRequest
+class RendaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,20 @@ class SalvarBancoRequest extends FormRequest
     public function rules()
     {
         return [
-            'descricao' => 'required|string'
+            'id_tiporenda' => 'required|integer',
+            'valor' => 'required|numeric',
+            'data' => 'required|date',
+            'descricao' => 'required|string',
         ];
     }
 
     public function messages()
     {
         return [
-            'descricao.required' => 'Descrição é obrigatório'
+            'id_tiporenda.required' => 'Tipo renda é obrigatório',
+            'valor.required' => 'Valor é obrigatório',
+            'data.required' => 'Data é obrigatório',
+            'descricao.required' => 'Descrição é obrigatório',
         ];
     }
 }

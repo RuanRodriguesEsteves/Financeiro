@@ -5,7 +5,7 @@
 
 <div class="card mb-4">
     <div class="card-header bg-dark text-white">
-        Cadastro de Tipo de Renda
+        Cadastro de Tipo de Despesa
     </div>
     <div class="card-body">
         <form action="{{ route('tipodespesa.salvar') }}" method="POST" class="row g-2 align-items-end mb-3">
@@ -19,6 +19,12 @@
             </div>
         </form>
     </div>
+    @if(session('successoSalvar'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert-msg">
+            {{ session('successoSalvar') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 </div>
 
 <div class="card mb-4">

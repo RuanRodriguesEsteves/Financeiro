@@ -39,6 +39,13 @@
             </div>
         </form>
     </div>
+
+    @if(session('successoSalvar'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert-msg">
+            {{ session('successoSalvar') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 </div>
 
 <div class="card mb-4">
