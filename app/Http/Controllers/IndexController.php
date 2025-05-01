@@ -10,10 +10,14 @@ class IndexController extends Controller {
 
         $totaisMesAtual = FinancasService::totalMesAtual();
         $totaisProximoMes = FinancasService::totalProximoMes();
+        $totalDespesasMesAtual = FinancasService::totalDespesaMesAtual();
+        $totalDespesaProximoMes = FinancasService::totalDespesaProximoMes();
 
         return view('home')->with([
             'totaisMesAtual' => $totaisMesAtual,
-            'totaisProximoMes' => $totaisProximoMes
+            'totaisProximoMes' => $totaisProximoMes,
+            'totaisDespesasMesAtual' => $totalDespesasMesAtual,
+            'totaisDespesasProximoMes' => $totalDespesaProximoMes
         ]);
 
     }
