@@ -17,7 +17,8 @@ class DespesaController extends Controller {
         $id_tipodespesa = $request->input('id_tipodespesa', null);
         $id_mensalidadecartao = $request->input('id_mensalidadecartao', null);
         $valor = $request->input('valor', null);
-        $data = $request->input('data', null);
+        $dataInicio = $request->input('datainicio', null);
+        $dataTermino = $request->input('datatermino', null);
         $ativo = $request->input('ativo', null);
 
         if($ativo === 'false') {
@@ -53,8 +54,12 @@ class DespesaController extends Controller {
             $query = $query->where('valor', $valor);
         }
 
-        if($data != null) {
-            $query = $query->where('data', $data);
+        if($dataInicio != null && $dataTermino != null) {
+            $query = $query->whereBetween('data', [$dataInicio, $dataTermino]);
+        }else if ($dataInicio != null) {
+            $query = $query->where('data', $dataInicio);
+        }else if ($dataTermino != null) {
+            $query = $query->where('data', $dataTermino);
         }
 
         $tipoDespesas = TipoDespesa::where('ativo', true)->orderBy('descricao')->get();

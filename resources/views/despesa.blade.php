@@ -67,12 +67,15 @@
     <div class="card-body">
         <form action=" {{ route('despesa.index') }} " method="GET" class="row g-2 align-items-end mb-3">
             <div class="col-md-1">
+                <label for="id" class="form-label">ID</label>
                 <input placeholder="ID" type="number" class="form-control" id="id" name="id">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-5">
+                <label for="descricao" class="form-label">Descrição</label>
                 <input placeholder="Descrição" type="text" class="form-control" id="descricao" name="descricao">
             </div>
             <div class="col-md-2">
+             <label for="id_tipodespesa" class="form-label">Tipo Despesa</label>
                 <select class="form-select" id="id_tipodespesa" name="id_tipodespesa">
                     <option value="">Todos Tipo Despesas</option>
                     @foreach ($tipoDespesas as $tipodespesa)
@@ -81,6 +84,7 @@
                 </select>
             </div>
             <div class="col-md-2">
+                <label for="id_mensalidadecartao" class="form-label">Mensalidade</label>
                 <select class="form-select" id="id_mensalidadecartao" name="id_mensalidadecartao">
                     <option value="">Todas Mensalidades</option>
                     @foreach ($mensalidadeCartoes as $mensalidadecartao)
@@ -89,16 +93,28 @@
                     <option value="null">Sem Mensalidade</option>
                 </select>
             </div>
-            <div class="col-md-1">
+
+            <div class="col-md-2">
+                <label for="valor" class="form-label">Valor</label>
                 <input placeholder="Valor" type="number" class="form-control" id="valor" name="valor">
             </div>
+
             <div class="col-md-2">
-                <input placeholder="Data" type="date" class="form-control" id="data" name="data">
+                <label for="data" class="form-label">Data</label>
+                <input placeholder="Data" type="date" class="form-control" id="datainicio" name="datainicio">
             </div>
+            <div class="col-md-1 text-center">
+                <h5>Até</h5>
+            </div>
+            <div class="col-md-2">
+                <input placeholder="Data" type="date" class="form-control" id="datatermino" name="datatermino">
+            </div>
+            
             <div class="col-md-1">
+                <label for="id_banco" class="form-label">Cancelado</label>
                 <select class="form-select" name="ativo" id="ativo">
-                    <option value="true" selected>Ativo</option>
-                    <option value="false">Cancelado</option>
+                    <option value="true" selected>Não</option>
+                    <option value="false">Sim</option>
                     <option value="Todos">Todos</option>
                 </select>
             </div>

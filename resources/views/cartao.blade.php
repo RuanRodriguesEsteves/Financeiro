@@ -45,12 +45,15 @@
         <form class="row g-2 align-items-end mb-3" action="{{route('cartao.index')}}" method="GET">
             @csrf
             <div class="col-md-1">
+                <label for="id" class="form-label">ID</label>
                 <input class="form-control" type="number" id="id" name="id" placeholder="ID">
             </div>
-            <div class="col-md-7">
+            <div class="col-md-5">
+                <label for="descricao" class="form-label">Descrição</label>
                 <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
             </div>
             <div class="col-md-2">
+                <label for="id_banco" class="form-label">Banco</label>
                 <select class="form-select" id="id_banco" name="id_banco">
                     <option value="">Todos</option>
                     @foreach ($bancos as $banco)
@@ -58,14 +61,15 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+                <label for="ativo" class="form-label">Situação</label>
                 <select name="ativo" id="ativo" class="form-select">
                     <option value="true" selected>Ativo</option>
                     <option value="false">Inativo</option>
                     <option value="todos">Todos</option>
                 </select>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <button type="submit" class="btn btn-dark w-100">Consultar</button>
             </div>
         </form>

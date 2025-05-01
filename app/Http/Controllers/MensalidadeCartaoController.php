@@ -15,8 +15,10 @@ class MensalidadeCartaoController extends Controller {
         $descricao = $request->input('descricao', null);
         $id_cartao = $request->input('id_cartao', null);
         $valor = $request->input('valor', null);
-        $datafechamento = $request->input('datafechamento', null);
-        $datavencimento = $request->input('datavencimento', null);
+        $dataFechamentoInicio = $request->input('datafechamentoinicio', null);
+        $dataFechamentoTermino = $request->input('datafechamentotermino', null);
+        $dataVencimentoInicio = $request->input('datavencimentoinicio', null);
+        $dataVencimentoTermino = $request->input('datavencimentotermino', null);
         $mesreferencia = $request->input('mesreferencia', null);
         $ativo = $request->input('ativo', null);
 
@@ -44,12 +46,20 @@ class MensalidadeCartaoController extends Controller {
             $query = $query->where('valor',  $valor);
         }
 
-        if($datafechamento != null) {
-            $query = $query->where('datafechamento', $datafechamento);
+        if($dataFechamentoInicio != null && $dataFechamentoTermino != null) {
+            $query = $query->whereBetween('datafechamento', [$dataFechamentoInicio, $dataFechamentoTermino]);
+        }else if ($dataFechamentoInicio != null) {
+            $query = $query->where('datafechamento', $dataFechamentoInicio);
+        }else if ($dataFechamentoTermino != null) {
+            $query = $query->where('datafechamento', $dataFechamentoTermino);
         }
 
-        if($datavencimento != null) {
-            $query = $query->where('datavencimento', $datavencimento);
+        if($dataVencimentoInicio != null && $dataVencimentoTermino != null) {
+            $query = $query->whereBetween('datavencimento', [$dataVencimentoInicio, $dataVencimentoTermino]);
+        }else if ($dataVencimentoInicio != null) {
+            $query = $query->where('datavencimento', $dataVencimentoInicio);
+        }else if ($dataVencimentoTermino != null) {
+            $query = $query->where('datavencimento', $dataVencimentoTermino);
         }
 
         if($mesreferencia != null) {

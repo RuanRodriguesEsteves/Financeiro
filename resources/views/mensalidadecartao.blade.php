@@ -65,20 +65,23 @@
 
 <div class="card mb-4">
     <div class="card-header bg-dark text-white">
-        Cadastrar Mensalidade
+        Consultar Mensalidade
     </div>
     <div class="card-body">
         <form action="{{route('mensalidadecartao.index')}}" method="GET" class="row g-2 align-items-end mb-3">
             @csrf
             <div class="col-md-1">
+                <label for="id" class="form-label">ID</label>
                 <input type="number" name="id" id="id" class="form-control" placeholder="ID">
             </div>
 
-            <div class="col-md-7">
+            <div class="col-md-5">
+                <label for="descricao" class="form-label">Descrição</label>
                 <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
             </div>
 
             <div class="col-md-2">
+                <label for="id_cartao" class="form-label">Cartão</label>
                 <select class="form-select" id="id_cartao" name="id_cartao">
                     <option value="">Todos</option>
                     @foreach ($cartoes as $cartao)
@@ -88,28 +91,42 @@
             </div>
 
             <div class="col-md-2">
+                <label for="id_banco" class="form-label">Valor</label>
                 <input type="number" step="0.01" class="form-control" id="valor" name="valor" placeholder="Valor">
             </div>
 
             <div class="col-md-2">
-                <label for="datafechamento">Data Fechamento</label>
-                <input type="date" class="form-control" id="datafechamento" name="datafechamento" placeholder="Data Fechamento">
-            </div>
-
-            <div class="col-md-2">
-                <label for="datafechamento">Data Vencimento</label>
-                <input type="date" class="form-control" id="datavencimento" name="datavencimento" placeholder="Data Vencimento">
-            </div>
-            
-            <div class="col-md-2">
                 <label for="mesreferencia">Mês Referência</label>
-                <input type="date" class="form-control" id="mesreferencia" name="mesreferencia" placeholder="Mês Referência">
+                <input type="month" class="form-control" id="mesreferencia" name="mesreferencia" placeholder="Mês Referência">
             </div>
 
             <div class="col-md-2">
+                <label for="datafechamentoinicio">Data Fechamento</label>
+                <input type="date" class="form-control" id="datafechamentoinicio" name="datafechamentoinicio" placeholder="Data Fechamento">
+            </div>
+            <div class="col-md-1 text-center">
+                <h5>Até</h5>
+            </div>
+            <div class="col-md-2">
+                <input type="date" class="form-control" id="datafechamentotermino" name="datafechamentotermino" placeholder="Data Fechamento">
+            </div>
+
+            <div class="col-md-2">
+                <label for="datavencimentoinicio">Data Vencimento</label>
+                <input type="date" class="form-control" id="datavencimentoinicio" name="datavencimentoinicio" placeholder="Data Vencimento">
+            </div>
+            <div class="col-md-1 text-center">
+                <h5>Até</h5>
+            </div>
+            <div class="col-md-2">
+                <input type="date" class="form-control" id="datavencimentotermino" name="datavencimentotermino" placeholder="Data Vencimento">
+            </div>
+
+            <div class="col-md-2">
+                <label for="ativo" class="form-label">Cancelado</label>
                 <select class="form-select" name="ativo" id="ativo">
-                    <option value="true" selected>Ativo</option>
-                    <option value="false">Cancelado</option>
+                    <option value="true" selected>Não</option>
+                    <option value="false">Sim</option>
                     <option value="todos">Todos</option>
                 </select>
             </div>

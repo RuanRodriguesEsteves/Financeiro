@@ -56,12 +56,15 @@
         <form action="{{route('renda.index')}}" method="GET" class="row g-2 align-items-end mb-3">
             @csrf
             <div class="col-md-1">
+                <label for="id" class="form-label">ID</label>
                 <input placeholder="ID" type="number" class="form-control" id="id" name="id">
             </div>
             <div class="col-md-3">
+                <label for="descricao" class="form-label">Descrição</label>
                 <input placeholder="Descrição" type="text" class="form-control" id="descricao" name="descricao">
             </div>
             <div class="col-md-2">
+                <label for="id_tiporenda" class="form-label">Tipo Renda</label>
                 <select class="form-select" id="id_tiporenda" name="id_tiporenda">
                     <option value="">Todos</option>
                     @foreach ($tipoRendas as $tipoRenda)
@@ -69,18 +72,29 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
+                <label for="valor" class="form-label">Valor</label>
                 <input placeholder="Valor" type="number" step="0.01" class="form-control" id="valor" name="valor">
             </div>
 
             <div class="col-md-2">
-                <input placeholder="Data" type="date" class="form-control" id="data" name="data">
+                <label for="data" class="form-label">Data</label>
+                <input placeholder="Data" type="date" class="form-control" id="datainicio" name="datainicio">
+            </div>
+
+            <div class="col-md-1 text-center">
+                <h5>Até</h5>
             </div>
 
             <div class="col-md-2">
+                <input placeholder="Data" type="date" class="form-control" id="datatermino" name="datatermino">
+            </div>
+
+            <div class="col-md-2">
+                <label for="id_banco" class="form-label">Cancelado</label>
                 <select class="form-select" name="ativo" id="ativo">
-                    <option value="true" selected>Ativo</option>
-                    <option value="false">Cancelado</option>
+                    <option value="true" selected>Não</option>
+                    <option value="false">Sim</option>
                     <option value="todos">Todos</option>
                 </select>
             </div>
@@ -101,6 +115,7 @@
             <th>Valor</th>
             <th>Data</th>
             <th>Cancelado</th>
+            <th>Opções</th>
         </tr>
     </thead>
     <tbody>

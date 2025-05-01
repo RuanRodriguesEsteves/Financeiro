@@ -34,12 +34,15 @@
     <div class="card-body">
         <form action="{{ route('tiporenda.index') }}" method="GET" class="row g-2 align-items-end">
             <div class="col-md-1">
+                <label for="id" class="form-label">ID</label>
                 <input type="number" name="id" class="form-control" placeholder="ID">
             </div>
             <div class="col-md-7">
+                <label for="descricao" class="form-label">Descrição</label>
                 <input type="text" name="descricao" class="form-control" placeholder="Descrição">
             </div>
             <div class="col-md-2">
+                <label for="ativo" class="form-label">Situação</label>
                 <select class="form-select w-100" name="ativo" id="ativo">
                     <option value="true" selected>Ativo</option>
                     <option value="false">Inativo</option>
@@ -52,7 +55,6 @@
         </form>
     </div>
 </div>
-
 
 <table class="table table-bordered table-hover">
     <thead class="table-dark">

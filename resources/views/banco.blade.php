@@ -35,12 +35,15 @@
         <form action="{{ route('banco.index') }}" method="GET" class="row g-2 align-items-end mb-3">
             @csrf
             <div class="col-md-1">
+                <label for="id" class="form-label">ID</label>
                 <input type="number" placeholder="ID" id="id" name="id" class="form-control">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
+                <label for="descricao" class="form-label">Descrição</label>
                 <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+                <label for="ativo" class="form-label">Situação</label>
                 <select name="ativo" id="ativo" class="form-select">
                     <option value="true" selected>Ativo</option>
                     <option value="false">Inativo</option>

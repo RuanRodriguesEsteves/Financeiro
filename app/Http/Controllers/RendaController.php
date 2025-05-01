@@ -15,7 +15,8 @@ class RendaController extends Controller {
         $descricao = $request->input('descricao', null);
         $id_tiporenda = $request->input('id_tiporenda', null);
         $valor = $request->input('valor', null);
-        $data = $request->input('data', null);
+        $dataInicio = $request->input('datainicio', null);
+        $dataTermino = $request->input('datatermino', null);
         $ativo = $request->input('ativo', null);
         
         if ($ativo === 'false') {
@@ -42,8 +43,12 @@ class RendaController extends Controller {
             $query = $query->where('valor', $valor);
         }
 
-        if($data != null) {
-            $query = $query->where('data', $data);
+        if($dataInicio != null && $dataTermino != null) {
+            $query = $query->whereBetween('data', [$dataInicio, $dataTermino]);
+        }else if ($dataInicio != null) {
+            $query = $query->where('data', $dataInicio);
+        }else if ($dataTermino != null) {
+            $query = $query->where('data', $dataTermino);
         }
 
         $tipoRendas = TipoRenda::where('ativo', true)->orderBy('descricao')->get();
