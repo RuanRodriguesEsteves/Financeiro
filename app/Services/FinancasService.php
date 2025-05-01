@@ -9,12 +9,12 @@ class FinancasService {
     private static string $totais = "
     WITH totais AS (
         SELECT
-            (SELECT
+            COALESCE((SELECT
                 SUM(valor)
             FROM
                 mensalidadecartao mc
             WHERE
-                mc.datavencimento BETWEEN ? AND ?) + 
+                mc.datavencimento BETWEEN ? AND ?), 0) + 
             (SELECT
                 SUM(valor)
             FROM
@@ -27,9 +27,9 @@ class FinancasService {
                 renda r
             WHERE r.data BETWEEN ? AND ?) rendatotal
     )SELECT
-        rendatotal,
-        despesatotal,
-        rendatotal - despesatotal valorrestante
+        COALESCE(rendatotal, 0) rendatotal,
+        COALESCE(despesatotal, 0) despesatotal,
+        COALESCE(rendatotal, 0) - COALESCE(despesatotal, 0) valorrestante
     FROM
         totais
     ";
