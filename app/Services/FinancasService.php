@@ -11,19 +11,19 @@ class FinancasService {
     WITH totais AS (
         SELECT
             COALESCE((SELECT
-                SUM(valor)
+                COALESCE(SUM(valor), 0)
             FROM
                 mensalidadecartao mc
             WHERE
                 mc.datavencimento BETWEEN ? AND ?), 0) + 
             (SELECT
-                SUM(valor)
+                COALESCE(SUM(valor), 0)
             FROM
                 despesa d
             WHERE
                 d.data BETWEEN ? AND ? AND id_mensalidadecartao IS NULL) despesatotal,
             (SELECT
-                SUM(valor)
+                COALESCE(SUM(valor), 0)
             FROM
                 renda r
             WHERE r.data BETWEEN ? AND ?) rendatotal
@@ -46,7 +46,16 @@ class FinancasService {
         tipodespesa td ON td.id = d.id_tipodespesa
     WHERE
         td.ativo
-        AND data BETWEEN ? AND ?
+        AND (data BETWEEN ? AND ?
+            OR id_mensalidadecartao IN (
+                SELECT
+                    id
+                FROM
+                    mensalidadecartao mc
+                WHERE
+                    mc.datavencimento BETWEEN ? AND ?
+    	    )
+        )
     GROUP BY
         td.id,
         td.descricao
@@ -81,6 +90,7 @@ class FinancasService {
         $ultimoDia = DataService::obterMesAtual()['ultimoDia'];
 
         return DB::select(DB::raw(self::$totaisDespesas), [
+            $primeiroDia, $ultimoDia,
             $primeiroDia, $ultimoDia
         ]);
     }
@@ -90,6 +100,7 @@ class FinancasService {
         $ultimoDia = DataService::obterProximoMes()['ultimoDia'];
 
         return DB::select(DB::raw(self::$totaisDespesas), [
+            $primeiroDia, $ultimoDia,
             $primeiroDia, $ultimoDia
         ]);
     }

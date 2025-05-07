@@ -199,7 +199,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="8" class="text-center">Nenhum Cartão cadastrado.</td>
+                <td colspan="9" class="text-center">Nenhum Cartão cadastrado.</td>
             </tr>
         @endforelse
     </tbody>
