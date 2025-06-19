@@ -12,5 +12,5 @@ Projeto de uma aplicação financeira desenvolvida para gerenciar receitas, desp
 ## Tecnologias Utilizadas
 
 - [Linguagens] (PHP, HTML, CSS)
-- [Franeworks] (Laravel, Bootstrap)
+- [Frameworks] (Laravel, Bootstrap)
 - [Banco de dados] (PostgreSQL)
